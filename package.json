@@ -21,16 +21,18 @@
 	],
 	"main": "./index.js",
 	"scripts": {
+		"test": "node test.js",
 		"start": "node index.js",
 		"start:verbose": "node index.js --verbose",
-		"test": "node test.js"
+		"deploy": "npm run test && openode deploy"
 	},
 	"dependencies": {
 		"a11ycolor": "^1.0.6",
 		"restify": "^6.3.4"
 	},
 	"devDependencies": {
-		"got": "^8.0.1"
+		"got": "^8.0.1",
+		"openode": "^1.2.5"
 	},
 	"engines": {
 		"node": "8.9.1"

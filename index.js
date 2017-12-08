@@ -67,7 +67,7 @@ const HandleResponse = ( request, response, Next ) => {
 /**
  * Rainbow - Collect response data and run HandleResponse
  */
-const Rainbow = Restify.createServer();
+const Rainbow = Restify.require('http')createServer();
 
 
 /**
@@ -81,7 +81,7 @@ Rainbow.get( '/rainbow/:toMakeA11y/:background/:ratioKey/:steps', HandleResponse
 /**
  * Start the server
  */
-const PORT = process.env.PORT;
+const PORT = 8080;
 
 Rainbow.listen( PORT, () => {
 	console.info( `🌈🌈🌈  Ready to find the accessible spectrum of light: ${ Rainbow.name } ${ Rainbow.url }/rainbow/` );
