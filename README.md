@@ -1,4 +1,4 @@
-# 🌈 Rainbow   ![Build status](https://travis-ci.org/alex-page/rainbow.svg?branch=master)
+# 🌈 Rainbow   [![Build Status](https://travis-ci.org/alex-page/rainbow.svg?branch=master)](https://travis-ci.org/alex-page/rainbow)
 
 > Finds the accessible spectrum of light for your a11y project.
 
