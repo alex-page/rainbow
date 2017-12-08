@@ -1,0 +1,47 @@
+{
+	"name": "rainbow",
+	"version": "1.0.0",
+	"description": "Finds the correct spectrum of light for your a11y project.",
+	"author": {
+		"name": "Alex Page",
+		"email": "alex@alexpage.com.au",
+		"url": "http://alexpage.com.au"
+	},
+	"contributors": [
+		{
+			"name": "Dominik Wilkowski",
+			"email": "Hi@Dominik-Wilkowski.com",
+			"url": "https://dominik-wilkowski.com/"
+		},
+		{
+			"name": "Alex Page",
+			"email": "alex@alexpage.com.au",
+			"url": "http://alexpage.com.au"
+		}
+	],
+	"main": "./index.js",
+	"scripts": {
+		"start": "node index.js",
+		"start:verbose": "node index.js --verbose",
+		"test": "node test.js"
+	},
+	"dependencies": {
+		"a11ycolor": "^1.0.6",
+		"restify": "^6.3.4"
+	},
+	"devDependencies": {
+		"got": "^8.0.1"
+	},
+	"engines": {
+		"node": "8.9.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/alex-page/rainbow.git"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/alex-page/rainbow/issues"
+	},
+	"homepage": "https://github.com/alex-page/rainbow#readme"
+}
