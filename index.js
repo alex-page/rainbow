@@ -81,7 +81,7 @@ Rainbow.get( '/rainbow/:toMakeA11y/:background/:ratioKey/:steps', HandleResponse
 /**
  * Start the server
  */
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 
 Rainbow.listen( PORT, () => {
 	console.info( `🌈🌈🌈  Ready to find the accessible spectrum of light: ${ Rainbow.name } ${ Rainbow.url }/rainbow/` );
