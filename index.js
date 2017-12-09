@@ -17,12 +17,6 @@ const Restify    = require( 'restify' );
 const A11yColor  = require( 'a11ycolor' );
 
 
-// Check if the user is in verbose mode
-if( process.argv.includes( '-v' ) || process.argv.includes( '--verbose' ) ) {
-	Log.verboseMode = true;
-}
-
-
 /**
  * HandleResponse - Takes the request and sends back a response
  *
@@ -81,9 +75,9 @@ Rainbow.get( '/rainbow/:toMakeA11y/:background/:ratioKey/:steps', HandleResponse
 /**
  * Start the server
  */
-const PORT = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
-Rainbow.listen( PORT, () => {
+Rainbow.listen( port, () => {
 	console.info( `🌈🌈🌈  Ready to find the accessible spectrum of light: ${ Rainbow.name } ${ Rainbow.url }/rainbow/` );
 });
 
