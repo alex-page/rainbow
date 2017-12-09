@@ -28,8 +28,7 @@
 	},
 	"dependencies": {
 		"a11ycolor": "^1.0.6",
-		"express": "^4.16.2",
-		"restify": "^6.3.4"
+		"express": "^4.16.2"
 	},
 	"devDependencies": {
 		"got": "^8.0.1",

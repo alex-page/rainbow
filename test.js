@@ -39,7 +39,7 @@ const GetData = ( url ) => {
 
 // Run the test a certain number of times
 for ( let i = 0; i < iterationMax; i ++ ) {
-	TestSpam.push( GetData( `${ Rainbow.url }/rainbow/red/red` ) );
+	TestSpam.push( GetData( `http://localhost:8080/rainbow/red/red` ) );
 }
 
 

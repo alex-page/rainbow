@@ -13,14 +13,9 @@
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Dependencies
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------
-const Restify    = require( 'restify' );
+const Express    = require( 'express' );
+const Http       = require( 'http' );
 const A11yColor  = require( 'a11ycolor' );
-
-
-// Check if the user is in verbose mode
-if( process.argv.includes( '-v' ) || process.argv.includes( '--verbose' ) ) {
-	Log.verboseMode = true;
-}
 
 
 /**
@@ -67,27 +62,29 @@ const HandleResponse = ( request, response, Next ) => {
 /**
  * Rainbow - Collect response data and run HandleResponse
  */
-const Rainbow = Restify.createServer({
-	name: 'Rainbow',
-	version: '1.0.0',
-	port: process.env.PORT || '8080'
-});
+const Rainbow = Express();
+const port    = process.env.PORT || '8080';
+
+
+Rainbow.set( 'port', port ); // Set the correct port
 
 
 /**
  * Server URL patterns
  */
-Rainbow.get( '/rainbow/:toMakeA11y/:background', HandleResponse );
-Rainbow.get( '/rainbow/:toMakeA11y/:background/:ratioKey/:steps', HandleResponse );
-Rainbow.get( '/rainbow/:toMakeA11y/:background/:ratioKey/', HandleResponse );
+Rainbow.use( '/rainbow/:toMakeA11y/:background?/:ratioKey?/', HandleResponse );
 
 
 /**
- * Start the server
+ * HTTP server
  */
-Rainbow.listen( Rainbow.port, () => {
-	console.info( `🌈🌈🌈  Ready to find the accessible spectrum of light: ${ Rainbow.name } ${ Rainbow.url }/rainbow/` );
+const Server = Http.createServer( Rainbow );
+
+Server.listen( port );
+
+Server.on( 'listening', () => {
+	console.log( `🌈🌈🌈  Ready to find the accessible spectrum of light: ${ port }/rainbow/`);
 });
 
 
-module.exports = Rainbow;
+module.exports = Server;
