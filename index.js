@@ -67,23 +67,25 @@ const HandleResponse = ( request, response, Next ) => {
 /**
  * Rainbow - Collect response data and run HandleResponse
  */
-const Rainbow = Restify.require('http')createServer();
+const Rainbow = Restify.createServer({
+	name: 'Rainbow',
+	version: '1.0.0',
+	port: process.env.PORT || '8080'
+});
 
 
 /**
  * Server URL patterns
  */
 Rainbow.get( '/rainbow/:toMakeA11y/:background', HandleResponse );
-Rainbow.get( '/rainbow/:toMakeA11y/:background/:ratioKey/', HandleResponse );
 Rainbow.get( '/rainbow/:toMakeA11y/:background/:ratioKey/:steps', HandleResponse );
+Rainbow.get( '/rainbow/:toMakeA11y/:background/:ratioKey/', HandleResponse );
 
 
 /**
  * Start the server
  */
-const PORT = 8080;
-
-Rainbow.listen( PORT, () => {
+Rainbow.listen( Rainbow.port, () => {
 	console.info( `🌈🌈🌈  Ready to find the accessible spectrum of light: ${ Rainbow.name } ${ Rainbow.url }/rainbow/` );
 });
 
