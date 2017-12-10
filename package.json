@@ -22,7 +22,6 @@
 	"main": "./index.js",
 	"scripts": {
 		"start": "node index.js",
-		"start:verbose": "node index.js --verbose",
 		"test": "node test.js"
 	},
 	"dependencies": {
@@ -31,9 +30,6 @@
 	},
 	"devDependencies": {
 		"got": "^8.0.1"
-	},
-	"engines": {
-		"node": "8.9.1"
 	},
 	"repository": {
 		"type": "git",
