@@ -19,9 +19,7 @@ const Got     = require( 'got' );
 
 // Test variables
 const start           = new Date().getTime();
-const TestSpam        = [];
-const iterationMax    = 10;
-let   completionCount = 0;
+const test            = [];
 
 
 // Get the data from the url
@@ -38,16 +36,23 @@ const GetData = ( url ) => {
 
 
 // Run the test a certain number of times
-for ( let i = 0; i < iterationMax; i ++ ) {
-	TestSpam.push( GetData( `${ Rainbow.url }/rainbow/red/red` ) );
-}
+test.push( GetData( `${ Rainbow.url }/rainbow/red/red` ) );
+test.push( GetData( `${ Rainbow.url }/rainbow/red/blue` ) );
+test.push( GetData( `${ Rainbow.url }/rainbow/rebeccapurple/cornflowerblue` ) );
+test.push( GetData( `${ Rainbow.url }/rainbow/#111/#f00` ) );
+test.push( GetData( `${ Rainbow.url }/rainbow/#1111/#f000` ) );
+test.push( GetData( `${ Rainbow.url }/rainbow/#f00000/#111111` ) );
+test.push( GetData( `${ Rainbow.url }/rainbow/rgb( 0, 0, 0 )/rgb( 100, 0, 0 )` ) );
+test.push( GetData( `${ Rainbow.url }/rainbow/rgb( 100%, 0%, 0% )/rgb( 100%, 0%, 0% )` ) );
+test.push( GetData( `${ Rainbow.url }/rainbow/rgba( 100%, 90%, 0%, 0.9 )/rgba( 0%, 5%, 0%, 0.9 )` ) );
+test.push( GetData( `${ Rainbow.url }/rainbow/hsl( 120, 100%, 50% )/hsl( 60, 20%, 50% )` ) );
+test.push( GetData( `${ Rainbow.url }/rainbow/hsla( 120, 100%, 50%, 0.9 )/hsla( 60, 20%, 50%, 0.9 )` ) );
 
 
 // Run them all asynchronously
-Promise.all( TestSpam )
+Promise.all( test )
 	.then( () => {
 		Rainbow.close();
-		console.log( `Jobs done: ${ completionCount }` );
 		console.log( `Total time: ${ new Date().getTime() - start }` );
 	})
 	.catch( error => console.error( error ) );
