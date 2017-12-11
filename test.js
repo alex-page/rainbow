@@ -13,46 +13,46 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 // DEPENDENCIES
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-const Rainbow = require('.');
-const Got     = require( 'got' );
+const Rainbow    = require('.');
+const GraphqlGot = require('graphql-got');
 
 
-// Test variables
-const start           = new Date().getTime();
-const test            = [];
+const url   = `http://localhost:8080/rainbow`;
+const tests = [];
 
 
-// Get the data from the url
-const GetData = ( url ) => {
-	return new Promise( ( resolve, reject ) => {
-		Got( url )
-			.then( a11ycolor => {
-				completionCount++;
-				resolve();
-			})
-			.catch( error => console.error( error ) );
-	})
-}
+// Queries to test
+const queries = [
+	`{ A11yColor( toMakeA11y: "red", background: "blue" ) }`,
+	`{ A11yColor( toMakeA11y: "#f00", background: "#f00" ) }`,
+	`{ A11yColor( toMakeA11y: "red", background: "blue" ) }`,
+	`{ A11yColor( toMakeA11y: "rebeccapurple", background: "cornflowerblue" ) }`,
+	`{ A11yColor( toMakeA11y: "#111", background: "#f00" ) }`,
+	`{ A11yColor( toMakeA11y: "#1111", background: "#f000" ) }`,
+	`{ A11yColor( toMakeA11y: "#f00000", background: "#111111" ) }`,
+	`{ A11yColor( toMakeA11y: "rgb( 0, 0, 0 )", background: "rgb( 100, 0, 0 )" ) }`,
+	`{ A11yColor( toMakeA11y: "rgba( 0, 0, 0, 1 )", background: "rgba( 100, 100, 0, 1 )" ) }`,
+	`{ A11yColor( toMakeA11y: "rgb( 100%, 0%, 0% )", background: "rgb( 100%, 0%, 0% )" ) }`,
+	`{ A11yColor( toMakeA11y: "rgba( 100%, 90%, 0%, 0.9 )", background: "rgba( 0%, 5%, 0%, 0.9 )" ) }`,
+	`{ A11yColor( toMakeA11y: "hsl( 120, 100%, 50% )", background: "hsl( 60, 20%, 50% )" ) }`,
+	`{ A11yColor( toMakeA11y: "hsla( 120, 100%, 50%, 0.9 )", background: "hsla( 60, 20%, 50%, 0.9 )" ) }`,
+];
 
 
-// Run the test a certain number of times
-test.push( GetData( `${ Rainbow.url }/rainbow/red/red` ) );
-test.push( GetData( `${ Rainbow.url }/rainbow/red/blue` ) );
-test.push( GetData( `${ Rainbow.url }/rainbow/rebeccapurple/cornflowerblue` ) );
-test.push( GetData( `${ Rainbow.url }/rainbow/#111/#f00` ) );
-test.push( GetData( `${ Rainbow.url }/rainbow/#1111/#f000` ) );
-test.push( GetData( `${ Rainbow.url }/rainbow/#f00000/#111111` ) );
-test.push( GetData( `${ Rainbow.url }/rainbow/rgb( 0, 0, 0 )/rgb( 100, 0, 0 )` ) );
-test.push( GetData( `${ Rainbow.url }/rainbow/rgb( 100%, 0%, 0% )/rgb( 100%, 0%, 0% )` ) );
-test.push( GetData( `${ Rainbow.url }/rainbow/rgba( 100%, 90%, 0%, 0.9 )/rgba( 0%, 5%, 0%, 0.9 )` ) );
-test.push( GetData( `${ Rainbow.url }/rainbow/hsl( 120, 100%, 50% )/hsl( 60, 20%, 50% )` ) );
-test.push( GetData( `${ Rainbow.url }/rainbow/hsla( 120, 100%, 50%, 0.9 )/hsla( 60, 20%, 50%, 0.9 )` ) );
+// Add each test into the promise
+queries.map( query => {
+	tests.push(
+		GraphqlGot( url, { query } )
+			.catch( error => console.error( `ERROR: ${ error.message }` ) )
+	);
+});
 
 
-// Run them all asynchronously
-Promise.all( test )
+// Return the results
+Promise.all( tests )
 	.then( () => {
-		Rainbow.close();
-		console.log( `Total time: ${ new Date().getTime() - start }` );
+		console.log( 'Jobs done' );
+		process.exit( 0 );
 	})
-	.catch( error => console.error( error ) );
+	.catch( error => console.error( `uh oh ${ error }` ) );
+

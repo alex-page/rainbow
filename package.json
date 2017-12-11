@@ -26,10 +26,12 @@
 	},
 	"dependencies": {
 		"a11ycolor": "^1.0.6",
-		"restify": "^6.3.4"
+		"express": "^4.16.2",
+		"express-graphql": "^0.6.11",
+		"graphql": "^0.11.7"
 	},
 	"devDependencies": {
-		"got": "^8.0.1"
+		"graphql-got": "^0.1.1"
 	},
 	"repository": {
 		"type": "git",
