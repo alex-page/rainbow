@@ -2,7 +2,7 @@
 
 > Finds the accessible spectrum of light for your a11y project.
 
-> The Rainbow is a REST API that allows users to send a **colour to be accessible** and the **background colour** and receive an **accessible version of the color** that is as close to the original and passes accessibility contrast. 
+> The Rainbow is a GraphQL API that allows users to send a query containing the **colour to be accessible** and **background colour** which returns an **accessible version of the color** that is as close to the original and passes accessibility contrast. 
 
 
 ## Install
@@ -14,20 +14,18 @@ Then run `npm start` or `npm watch` to start the REST api.
 
 
 ## Getting started
-Once the server is started it can now take paramaters through the URL:
+Once the server is started it can now take POST requests through the URL:
 
 ```
-http://localhost:8080/rainbow/red/blue
-http://localhost:8080/rainbow/red/blue/small
-http://localhost:8080/rainbow/red/blue/small/0.1
+curl -XPOST -H 'Content-Type:application/graphql' -d '{ A11yColor( toMakeA11y: "red", background: "blue" ) }' http://localhost:8080/rainbow
 ```
-The above URL would return a hex value of `{ color: #ffa3a3 }`.
+The above POST would return an object containing: `{ "data": { "A11yColor" : "#FFA3A3" } }`.
 
 
-## URL Pattern
-The URL pattern is based off the [`A11yColor`](https://www.npmjs.com/package/a11ycolor) module.
+## POST Paramaters
+The POST request pattern is based off the [`A11yColor`](https://www.npmjs.com/package/a11ycolor) module.
 ```
-http://localhost:8080/rainbow/:toMakeA11y/:background/:unitKey/:steps
+A11yColor( toMakeA11y: "red", background: "blue", ratioKey: small, steps: 0.1 )
 ```
 
 ### `toMakeA11y` ( *required* )
