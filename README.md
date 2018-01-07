@@ -5,6 +5,12 @@
 > The Rainbow is a GraphQL API that allows users to send a query containing the **colour to be accessible** and **background colour** which returns an **accessible version of the color** that is as close to the original and passes accessibility contrast. 
 
 
+## Usage
+You can use the service by sending a graphql POST request to `http://rainbow.openode.io/rainbow`
+```
+curl -XPOST -H 'Content-Type:application/graphql' -d '{ A11yColor( toMakeA11y: "red", background: "blue" ) }' http://rainbow.openode.io/rainbow
+```
+
 ## Install
 
 ```shell
