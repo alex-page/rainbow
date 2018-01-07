@@ -28,7 +28,8 @@
 		"a11ycolor": "^1.0.6",
 		"express": "^4.16.2",
 		"express-graphql": "^0.6.11",
-		"graphql": "^0.11.7"
+		"graphql": "^0.11.7",
+		"openode": "^1.2.8"
 	},
 	"devDependencies": {
 		"graphql-got": "^0.1.1"
