@@ -44,4 +44,5 @@ The step size our function is searching for a new color in. The bigger the numbe
 
 ## Release History
 
+* v1.0.1 - Update dependencies
 * v1.0.0 - First release
