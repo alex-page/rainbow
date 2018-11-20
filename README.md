@@ -31,7 +31,7 @@ The above POST would return an object containing: `{ "data": { "A11yColor" : "#F
 ## POST Paramaters
 The POST request pattern is based off the [`A11yColor`](https://www.npmjs.com/package/a11ycolor) module.
 ```
-A11yColor( toMakeA11y: "red", background: "blue", ratioKey: small, steps: 0.1 )
+A11yColor( toMakeA11y: "red", background: "blue", ratioKey: small )
 ```
 
 ### `toMakeA11y` ( *required* )
@@ -43,9 +43,6 @@ This is
 
 ### `ratioKey` ( *default* : `small` )
 The keyword 'small' or 'large' to set the WCAG 2.1 contrast ration or 3.0 or 4.5.
-
-### `steps` ( *default* : `0.1` )
-The step size our function is searching for a new color in. The bigger the number the faster the process the rougher the found color. 
 
 
 ## Release History
