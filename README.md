@@ -1,51 +1,40 @@
-# 🌈 Rainbow   [![Build Status](https://travis-ci.org/alex-page/rainbow.svg?branch=master)](https://travis-ci.org/alex-page/rainbow)
+# 🌈 Rainbow
 
 > Finds the accessible spectrum of light for your a11y project.
 
-> The Rainbow is a GraphQL API that allows users to send a query containing the **colour to be accessible** and **background colour** which returns an **accessible version of the color** that is as close to the original and passes accessibility contrast. 
-
 
 ## Usage
-You can use the service by sending a graphql POST request to `http://rainbow.openode.io/rainbow`
-```
-curl -XPOST -H 'Content-Type:application/graphql' -d '{ A11yColor( toMakeA11y: "red", background: "blue" ) }' http://rainbow.openode.io/rainbow
+
+The URL takes a foreground color that will be changed to make a 4.5 contrast on the background color:
+
+[https://a11ycolor.now.sh/red/red](https://a11ycolor.now.sh/red/red)
+```json
+{
+  "a11ycolor": "#000000"
+}
 ```
 
-## Install
-
-```shell
-npm install
+[https://a11ycolor.now.sh/000/000](https://a11ycolor.now.sh/000/000)
+```json
+{
+  "a11ycolor": "#757575"
+}
 ```
-Then run `npm start` or `npm watch` to start the REST api.
 
 
 ## Getting started
-Once the server is started it can now take POST requests through the URL:
+
+To get started locally make sure you have `node` and `npm` installed:
 
 ```
-curl -XPOST -H 'Content-Type:application/graphql' -d '{ A11yColor( toMakeA11y: "red", background: "blue" ) }' http://localhost:8080/rainbow
-```
-The above POST would return an object containing: `{ "data": { "A11yColor" : "#FFA3A3" } }`.
-
-
-## POST Paramaters
-The POST request pattern is based off the [`A11yColor`](https://www.npmjs.com/package/a11ycolor) module.
-```
-A11yColor( toMakeA11y: "red", background: "blue", ratioKey: small )
+npm install && npm run dev
 ```
 
-### `toMakeA11y` ( *required* )
-The color that is to be made accessible on the background.
-
-### `background` ( *required* )
-The background color to test the `toMakeA11y` for the contrast.
-This is 
-
-### `ratioKey` ( *default* : `small` )
-The keyword 'small' or 'large' to set the WCAG 2.1 contrast ration or 3.0 or 4.5.
+Then you can open [https://localhost:3000/red/000](https://localhost:3000/red/000) to see the API running locally.
 
 
 ## Release History
 
+* v2.0.0 - New RESTful API published on Zeit Now
 * v1.0.1 - Update dependencies
 * v1.0.0 - First release

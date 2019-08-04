@@ -1,6 +1,0 @@
-os: osx
-language: node_js
-node_js:
-  - '8'
-after_success:
-  "openode deploy -t $OPENODE_TOKEN -s $OPENODE_SITENAME"

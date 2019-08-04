@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "alias": "a11ycolor.now.sh",
+  "public": true,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(?<fg>[^/]+)/(?<bg>[^/]+)",
+      "dest": "/index.js?colorToBeA11y=$a11ycolor&background=$bg"
+    },
+    {
+      "src": "/",
+      "status": 302,
+      "headers": {
+        "Location": "https://github.com/alex-page/a11ycolor"
+      }
+    }
+  ]
+}
