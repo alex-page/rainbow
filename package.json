@@ -4,6 +4,7 @@
 	"description": "Finds the accessible spectrum of light for your a11y project.",
 	"main": "./index.js",
 	"scripts": {
+		"deploy": "now",
 		"dev": "now dev",
 		"test": "ava && xo"
 	},
