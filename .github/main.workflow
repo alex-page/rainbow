@@ -13,15 +13,3 @@ action "Test" {
   args = "run test"
   needs = ["Install dependencies"]
 }
-
-action "Master branch only" {
-  uses = "actions/bin/filter@master"
-  args = "branch master"
-  needs = ["Test"]
-}
-
-action "Publish" {
-  uses = "actions/npm@master"
-  args = "run deploy"
-  needs = ["Master branch only"]
-}
