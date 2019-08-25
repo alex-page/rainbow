@@ -1,6 +1,6 @@
-# 🌈 Rainbow
+# Rainbow
 
-> Finds the accessible spectrum of light for your a11y project.
+> 🌈 Find the accessible spectrum of light with a URL
 
 
 ## Usage
