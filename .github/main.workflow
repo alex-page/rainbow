@@ -1,15 +1,15 @@
-workflow "Build, test and publish on master" {
+workflow "Build, test and publish" {
   on = "push"
   resolves = ["Publish"]
 }
 
 action "Install dependencies" {
-  uses = "actions/npm@master"
+  uses = "actions/npm@main"
   args = "install"
 }
 
 action "Test" {
-  uses = "actions/npm@master"
+  uses = "actions/npm@main"
   args = "run test"
   needs = ["Install dependencies"]
 }
