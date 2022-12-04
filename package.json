@@ -15,9 +15,9 @@
 		"color": "^3.1.2"
 	},
 	"devDependencies": {
-		"ava": "^2.2.0",
+		"ava": "^5.1.0",
 		"now": "^15.8.7",
-		"xo": "^0.24.0"
+		"xo": "^0.53.1"
 	},
 	"private": true,
 	"author": {
